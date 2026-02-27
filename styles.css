@@ -173,8 +173,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: flex;
 	align-items: flex-start;
 	position: relative;
-	padding: 8px 0;
-	padding-left: 0;
+	padding: 16px 0;
 }
 
 .icon-bullet {
@@ -200,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .icon-list h4 {
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: 600;
 	color: #333;
 	line-height: 40px;
@@ -210,8 +209,8 @@ h1, h2, h3, h4, h5, h6 {
 .timeline-line {
 	position: absolute;
 	left: 19px;
-	top: 48px;
-	bottom: -8px;
+	top: 56px;
+	bottom: -16px;
 	width: 2px;
 	background-color: #e1e1e1;
 	z-index: 1;
@@ -232,21 +231,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slideshow-slides {
-	position: relative;
+	display: grid;
 	width: 100%;
-	padding-bottom: 133.333%;
 	overflow: hidden;
 }
 
 .slide {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	grid-area: 1 / 1;
 	opacity: 0;
 	transition: opacity 0.8s ease-in-out;
-	z-index: 1;
+	min-width: 0;
 }
 
 .slide.active {
@@ -254,20 +248,14 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 2;
 }
 
-.slide img,
-.slide a {
+.slide img {
 	display: block;
 	width: 100%;
-	height: 100%;
-}
-
-.slide img {
-	object-fit: cover;
-	object-position: center;
+	height: auto;
 }
 
 .slide a {
-	cursor: default;
+	display: block;
 }
 
 /* Slideshow Arrows */
@@ -276,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: calc(100% - 40px);
+	height: 100%;
 	z-index: 10;
 	pointer-events: none;
 }
@@ -290,7 +278,7 @@ h1, h2, h3, h4, h5, h6 {
 	justify-content: center;
 	width: 36px;
 	height: 60px;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.25);
 	color: #fff;
 	text-decoration: none;
 	pointer-events: auto;
@@ -299,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slide-arrow:hover {
-	background-color: rgba(0, 0, 0, 0.85);
+	background-color: rgba(0, 0, 0, 0.55);
 }
 
 .slide-arrow svg {
@@ -316,42 +304,6 @@ h1, h2, h3, h4, h5, h6 {
 	right: 0;
 }
 
-/* Slideshow Dots */
-.slideshow-dots {
-	display: flex;
-	justify-content: center;
-	gap: 4px;
-	margin-top: 10px;
-	position: relative;
-	z-index: 10;
-}
-
-.dot {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 22px;
-	height: 22px;
-	border-radius: 50%;
-	background-color: #b5b5b5;
-	color: #fff;
-	font-size: 10px;
-	font-weight: 600;
-	text-decoration: none;
-	transition: background-color 0.3s ease;
-	line-height: 1;
-	cursor: pointer;
-}
-
-.dot:hover {
-	background-color: #888;
-	color: #fff;
-}
-
-.dot.active {
-	background-color: #71a7cb;
-	color: #fff;
-}
 
 /* ========================================
    Decorative Divider
@@ -522,10 +474,6 @@ h1, h2, h3, h4, h5, h6 {
 		width: 100%;
 	}
 
-	.slideshow-slides {
-		padding-bottom: 100%;
-	}
-
 	.heading-block h1 {
 		font-size: 20px;
 	}
@@ -577,12 +525,6 @@ h1, h2, h3, h4, h5, h6 {
 	.timeline-line {
 		left: 15px;
 		top: 40px;
-	}
-
-	.dot {
-		width: 18px;
-		height: 18px;
-		font-size: 9px;
 	}
 
 	.contact-block h3 {
