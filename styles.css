@@ -1,0 +1,462 @@
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #2c3e50;
+	--secondary-color: #ecf0f1;
+	--accent-color: #d4a574;
+	--text-color: #333;
+	--light-text: #666;
+	--border-color: #ddd;
+	--spacing-unit: 1rem;
+	--max-width: 1200px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: #fff;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2;
+	margin-bottom: var(--spacing-unit);
+	font-weight: 600;
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+	color: var(--primary-color);
+	margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+h3 {
+	font-size: 1.25rem;
+	color: var(--primary-color);
+}
+
+p {
+	margin-bottom: var(--spacing-unit);
+	color: var(--light-text);
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	color: var(--primary-color);
+}
+
+/* ========================================
+   Container & Layout
+   ======================================== */
+
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--spacing-unit);
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+
+.site-header {
+	background-color: #fff;
+	border-bottom: 1px solid var(--border-color);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	padding: var(--spacing-unit) 0;
+}
+
+.header-container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--spacing-unit);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.site-logo {
+	height: 60px;
+	width: auto;
+	transition: transform 0.3s ease;
+}
+
+.site-logo:hover {
+	transform: scale(1.05);
+}
+
+.site-nav ul {
+	display: flex;
+	list-style: none;
+	gap: calc(var(--spacing-unit) * 2);
+}
+
+.site-nav a {
+	color: var(--primary-color);
+	font-weight: 500;
+	padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+	border-bottom: 2px solid transparent;
+	transition: border-color 0.3s ease;
+}
+
+.site-nav a:hover {
+	border-bottom-color: var(--accent-color);
+	color: var(--accent-color);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+	background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+	color: #fff;
+	padding: calc(var(--spacing-unit) * 6) var(--spacing-unit);
+	text-align: center;
+	min-height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-content {
+	max-width: 800px;
+}
+
+.hero h1 {
+	color: #fff;
+	font-size: 3rem;
+	margin-bottom: calc(var(--spacing-unit) * 2);
+	line-height: 1.3;
+}
+
+/* ========================================
+   Services Section
+   ======================================== */
+
+.services {
+	padding: calc(var(--spacing-unit) * 4) 0;
+	background-color: var(--secondary-color);
+}
+
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: calc(var(--spacing-unit) * 2);
+	margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.service-item {
+	background-color: #fff;
+	padding: calc(var(--spacing-unit) * 1.5);
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-item h3 {
+	margin-bottom: calc(var(--spacing-unit) * 0.5);
+	font-size: 1.1rem;
+}
+
+/* ========================================
+   Portfolio / Carousel Section
+   ======================================== */
+
+.portfolio {
+	padding: calc(var(--spacing-unit) * 4) 0;
+	background-color: #fff;
+}
+
+.carousel {
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	margin: calc(var(--spacing-unit) * 2) 0;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item {
+	display: none;
+	width: 100%;
+}
+
+.carousel-item.active {
+	display: block;
+	animation: fadeIn 0.5s ease-in;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+	max-height: 500px;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.carousel-controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: calc(var(--spacing-unit) * 2);
+	margin-top: calc(var(--spacing-unit) * 2);
+	flex-wrap: wrap;
+}
+
+.carousel-prev,
+.carousel-next {
+	padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+	background-color: var(--accent-color);
+}
+
+.carousel-dots {
+	display: flex;
+	gap: calc(var(--spacing-unit) * 0.5);
+}
+
+.dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 2px solid var(--primary-color);
+	background-color: transparent;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.dot.active {
+	background-color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+/* ========================================
+   Call-to-Action Section
+   ======================================== */
+
+.cta {
+	background-color: var(--secondary-color);
+	padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+	text-align: center;
+}
+
+.cta h2 {
+	margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.cta p {
+	max-width: 600px;
+	margin: 0 auto calc(var(--spacing-unit) * 2) auto;
+	font-size: 1.05rem;
+}
+
+.cta-buttons {
+	display: flex;
+	gap: var(--spacing-unit);
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.btn {
+	display: inline-block;
+	padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 2);
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btn-primary {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+.btn-primary:hover {
+	background-color: var(--accent-color);
+	color: #fff;
+}
+
+.btn-secondary {
+	background-color: var(--accent-color);
+	color: #fff;
+}
+
+.btn-secondary:hover {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.site-footer {
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: calc(var(--spacing-unit) * 3) 0;
+	text-align: center;
+	border-top: 3px solid var(--accent-color);
+}
+
+.footer-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--spacing-unit);
+}
+
+.footer-logo {
+	height: 50px;
+	width: auto;
+}
+
+.site-footer p {
+	color: #fff;
+	margin: 0;
+	font-size: 0.95rem;
+}
+
+.site-footer a {
+	color: var(--accent-color);
+}
+
+.site-footer a:hover {
+	color: #fff;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	.header-container {
+		flex-direction: column;
+		gap: var(--spacing-unit);
+	}
+
+	.site-nav ul {
+		gap: var(--spacing-unit);
+		font-size: 0.9rem;
+	}
+
+	.hero {
+		padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+		min-height: 300px;
+	}
+
+	.hero h1 {
+		font-size: 2rem;
+	}
+
+	.services-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.cta-buttons {
+		flex-direction: column;
+	}
+
+	.btn {
+		width: 100%;
+	}
+
+	.carousel-controls {
+		flex-direction: column;
+		gap: var(--spacing-unit);
+	}
+}
+
+@media (max-width: 480px) {
+	:root {
+		--spacing-unit: 0.75rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+	}
+
+	.site-nav ul {
+		gap: calc(var(--spacing-unit) * 0.75);
+	}
+
+	.site-logo {
+		height: 45px;
+	}
+
+	.hero h1 {
+		font-size: 1.5rem;
+	}
+
+	.carousel-item img {
+		max-height: 300px;
+	}
+}
