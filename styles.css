@@ -403,8 +403,13 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
 	background-color: #333;
 	padding: 20px 0;
-	text-align: center;
 	border-top: 1px solid #333;
+}
+
+.site-footer .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .copyright {
@@ -423,20 +428,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .bug-report-btn {
 	display: inline-block;
-	margin-top: 10px;
 	padding: 5px 14px;
 	font-size: 10px;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
-	color: #999;
-	border: 1px solid #555;
+	color: #1a2744;
+	border: 1px solid #1a2744;
 	border-radius: 3px;
-	transition: color 0.2s ease, border-color 0.2s ease;
+	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .bug-report-btn:hover {
 	color: #fff;
-	border-color: #999;
+	border-color: #2a3f6b;
+	background-color: #1a2744;
 }
 
 /* ========================================
