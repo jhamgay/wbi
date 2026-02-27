@@ -1,114 +1,120 @@
-// ========================================
-// Carousel / Slider Functionality
-// ========================================
+(function () {
+	// ========================================
+	// Slideshow
+	// ========================================
 
-(function() {
-	const carousel = document.querySelector('.carousel');
-	const items = document.querySelectorAll('.carousel-item');
-	const dots = document.querySelectorAll('.dot');
-	const prevBtn = document.querySelector('.carousel-prev');
-	const nextBtn = document.querySelector('.carousel-next');
+	var slideshow = document.querySelector('.slideshow');
+	if (!slideshow) return;
 
-	let currentIndex = 0;
+	var slides = slideshow.querySelectorAll('.slide');
+	var dots = slideshow.querySelectorAll('.dot');
+	var prevBtn = slideshow.querySelector('.prev-arrow');
+	var nextBtn = slideshow.querySelector('.next-arrow');
+	var interval = parseInt(slideshow.getAttribute('data-interval'), 10) || 5;
+	var current = 0;
+	var timer = null;
 
-	// Initialize carousel on page load
-	function init() {
-		if (items.length === 0) return;
-		showSlide(currentIndex);
-	}
-
-	// Show slide at specific index
 	function showSlide(index) {
-		if (items.length === 0) return;
+		if (slides.length === 0) return;
 
-		// Wrap around
-		if (index >= items.length) {
-			currentIndex = 0;
-		} else if (index < 0) {
-			currentIndex = items.length - 1;
-		} else {
-			currentIndex = index;
+		if (index >= slides.length) index = 0;
+		if (index < 0) index = slides.length - 1;
+
+		current = index;
+
+		for (var i = 0; i < slides.length; i++) {
+			slides[i].classList.remove('active');
 		}
+		slides[current].classList.add('active');
 
-		// Update carousel items
-		items.forEach((item, i) => {
-			item.classList.remove('active');
-			if (i === currentIndex) {
-				item.classList.add('active');
-			}
-		});
-
-		// Update dots
-		dots.forEach((dot, i) => {
-			dot.classList.remove('active');
-			if (i === currentIndex) {
-				dot.classList.add('active');
-			}
-		});
+		for (var j = 0; j < dots.length; j++) {
+			dots[j].classList.remove('active');
+		}
+		if (dots[current]) {
+			dots[current].classList.add('active');
+		}
 	}
 
-	// Next slide
 	function nextSlide() {
-		showSlide(currentIndex + 1);
+		showSlide(current + 1);
 	}
 
-	// Previous slide
 	function prevSlide() {
-		showSlide(currentIndex - 1);
+		showSlide(current - 1);
 	}
 
-	// Event listeners for buttons
+	function startAutoplay() {
+		stopAutoplay();
+		timer = setInterval(nextSlide, interval * 1000);
+	}
+
+	function stopAutoplay() {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+
 	if (prevBtn) {
-		prevBtn.addEventListener('click', prevSlide);
+		prevBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			prevSlide();
+			startAutoplay();
+		});
 	}
 
 	if (nextBtn) {
-		nextBtn.addEventListener('click', nextSlide);
+		nextBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			nextSlide();
+			startAutoplay();
+		});
 	}
 
-	// Event listeners for dots
-	dots.forEach((dot, index) => {
-		dot.addEventListener('click', () => {
-			showSlide(index);
-		});
-	});
+	for (var d = 0; d < dots.length; d++) {
+		(function (idx) {
+			dots[idx].addEventListener('click', function (e) {
+				e.preventDefault();
+				showSlide(idx);
+				startAutoplay();
+			});
+		})(d);
+	}
 
-	// Auto-advance carousel every 5 seconds (optional)
-	// Uncomment below to enable auto-play
-	/*
-	setInterval(nextSlide, 5000);
-	*/
+	showSlide(0);
+	startAutoplay();
 
-	// Initialize on load
-	init();
-})();
+	// ========================================
+	// Footer Year
+	// ========================================
 
-// ========================================
-// Footer Year Helper
-// ========================================
-
-(function() {
-	const yearEl = document.getElementById('year');
+	var yearEl = document.getElementById('year');
 	if (yearEl) {
 		yearEl.textContent = new Date().getFullYear();
 	}
-})();
 
-// ========================================
-// Smooth scroll for navigation links
-// ========================================
+	// ========================================
+	// Scroll to Top
+	// ========================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	anchor.addEventListener('click', function (e) {
-		const href = this.getAttribute('href');
-		if (href !== '#') {
-			e.preventDefault();
-			const target = document.querySelector(href);
-			if (target) {
-				target.scrollIntoView({
-					behavior: 'smooth'
-				});
-			}
+	var scrollBtn = document.getElementById('scrollTop');
+
+	function toggleScrollBtn() {
+		if (!scrollBtn) return;
+		if (window.pageYOffset > 300) {
+			scrollBtn.classList.add('visible');
+		} else {
+			scrollBtn.classList.remove('visible');
 		}
-	});
-});
+	}
+
+	window.addEventListener('scroll', toggleScrollBtn);
+	toggleScrollBtn();
+
+	if (scrollBtn) {
+		scrollBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	}
+})();
