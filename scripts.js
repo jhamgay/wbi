@@ -43,15 +43,14 @@
 		oldSlide.style.transition = 'opacity ' + (transitionSpeed / 1000) + 's ease-in-out';
 		newSlide.style.transition = 'opacity ' + (transitionSpeed / 1000) + 's ease-in-out';
 
-		newSlide.classList.add('next-active');
+		newSlide.style.visibility = 'visible';
 		newSlide.style.opacity = '0';
+		newSlide.classList.add('next-active');
 
-		// Force reflow so the browser registers the starting opacity
 		newSlide.offsetHeight;
 
 		newSlide.style.opacity = '1';
 		newSlide.classList.add('active');
-
 		oldSlide.style.opacity = '0';
 
 		setTimeout(function () {
