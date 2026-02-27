@@ -452,9 +452,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-footer .container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
-	justify-content: space-between;
 	padding: 0 20px;
 }
 
@@ -462,7 +462,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: #999;
 	font-size: 11px;
 	letter-spacing: 0.5px;
-	flex: 1;
 }
 
 .copyright a {
@@ -483,8 +482,7 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 3px;
 	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 	white-space: nowrap;
-	flex: 0 0 auto;
-	align-self: center;
+	justify-self: end;
 }
 
 .bug-report-btn:hover {
@@ -499,7 +497,6 @@ h1, h2, h3, h4, h5, h6 {
 	gap: 16px;
 	align-items: center;
 	justify-content: center;
-	flex: 1;
 }
 
 .social-icon {
