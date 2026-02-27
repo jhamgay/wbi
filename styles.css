@@ -141,6 +141,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
+   Page Navigation
+   ======================================== */
+
+.page-nav {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.nav-btn {
+	display: inline-block;
+	padding: 8px 22px;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.3px;
+	color: #555;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	background: #fff;
+	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-btn:hover {
+	color: #fff;
+	background-color: #555;
+	border-color: #555;
+}
+
+/* ========================================
    Two-Column Layout
    ======================================== */
 
@@ -443,6 +473,39 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 	border-color: #7baad8;
 	background-color: #5b8fc7;
+}
+
+.footer-social {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+}
+
+.social-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #555;
+	transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.social-icon:hover {
+	border-color: #999;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-icon svg {
+	width: 14px;
+	height: 14px;
+	fill: #999;
+	transition: fill 0.2s ease;
+}
+
+.social-icon:hover svg {
+	fill: #fff;
 }
 
 /* ========================================
