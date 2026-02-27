@@ -152,13 +152,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .col-services {
-	flex: 6;
+	flex: 4;
 	min-width: 0;
 	padding-left: 40px;
 }
 
 .col-slideshow {
-	flex: 4;
+	flex: 3;
 	min-width: 0;
 }
 
