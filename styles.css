@@ -483,8 +483,8 @@ h1, h2, h3, h4, h5, h6 {
 	border: 1px solid #999;
 	border-radius: 3px;
 	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-	flex: 1;
-	text-align: right;
+	margin-left: auto;
+	white-space: nowrap;
 }
 
 .bug-report-btn:hover {
